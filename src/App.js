@@ -1,8 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 
+import axios from "axios";
+import { userEffect } from "react";
+
 function App() {
-  return (
+  const callApi = async () => {
+    axios.get("/api").then(res => console.log(res.data.test));
+  }
+
+  userEffect( ()=> {
+    callApi();
+  }, []);
+
+  return <div>test</div>;
+
+  /*return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,7 +32,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  );*/
 }
 
 export default App;
